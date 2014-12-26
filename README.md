@@ -1,4 +1,4 @@
-# Hijiri（日知り）
+# Hijiri
 
 日本語の文中に含まれる時刻表現をパースします。
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 require 'hijiri'
 
 hijiri = Hijiri.parse("1977年8月15日11時42分33秒")
