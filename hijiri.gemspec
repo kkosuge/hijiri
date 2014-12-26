@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["kkosuge"]
   spec.email         = ["root@kksg.net"]
   spec.summary       = %q{Derive Time from Time expression with Japanese language.}
-  spec.description   = %q{日本語の文中に含まれる時刻表現をパースします。}
+  spec.description   = %q{Derive Time from Time expression with Japanese language.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
