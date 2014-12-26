@@ -1,6 +1,6 @@
-# Hijiri
+# Hijiri（日知り）
 
-TODO: Write a gem description
+日本語の文中に含まれる時刻表現をパースします。
 
 ## Installation
 
@@ -20,7 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'hijiri'
+
+hijiri = Hijiri.parse("1977年8月15日11時42分33秒")
+p hijiri.results.first.datetime #=> 1977-08-15 11:42:33 +0900
+
+hijiri = Hijiri.parse("忘れない10年後の8月また出会えるのを…")
+p hijiri.results.first.datetime #=> 2024-08-01 00:00:00 +0900
+
+hijiri = Hijiri.parse("あうあうあー１５分後に…")
+p hijiri.results.first.datetime #=> 2014-12-27 02:16:23 +0900
+
+Time.now #=> 2014-12-27 02:01:23 +0900
+```
 
 ## Contributing
 
