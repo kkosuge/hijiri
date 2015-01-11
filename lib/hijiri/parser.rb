@@ -18,8 +18,8 @@ module Hijiri
     TIMER_WORDS = %w(あとに 後 経った たった 経過 けいか).join('|')
 
     def initialize(text)
-      @original_text = text.clone
-      @text = text
+      @original_text = text.dup
+      @text = text.dup
       @results = []
       @current = Time.now
     end
