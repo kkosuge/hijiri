@@ -118,7 +118,7 @@ module Hijiri
       end
       if n && h.nil? && d.nil? && m.nil? && y.nil? && conv_time(y,m,d,h,n,s) < @current
         h = @current.hour + 1
-        h = 1 if h > 24
+        h = 0 if h > 23
         return point_time(y,m,d,h,n,s)
       end
       if s && n.nil? && h.nil? && d.nil? && m.nil? && y.nil? && conv_time(y,m,d,h,n,s) < @current
