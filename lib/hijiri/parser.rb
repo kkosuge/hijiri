@@ -41,6 +41,15 @@ module Hijiri
         .scan(/(?:(?:[\d]+年)?(?:[\d]+月)?(?:[\d]+日)?(?:[\d]+時間?)?(?:[\d]+分)?(?:[\d]+秒)?(?:#{TIMER_WORDS})?)+/)
         .delete_if(&:blank?)
         .delete_if{ |word| !word.match(/\d/) }
+
+      if words.blank?
+        begin
+          time = Time.parse(@text)
+          words.push(time.strftime("%Y年%m月%d日 %H時%M分%S秒"))
+        rescue
+        end
+      end
+
       @results = words.map{ |result| Hashie::Mash.new(word: result) }
     end
 
