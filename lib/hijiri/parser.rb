@@ -127,6 +127,12 @@ module Hijiri
         return point_time(y,m,d,h,n,s)
       end
 
+      s = 0 if s.to_i == 0
+      n = 0 if s.to_i == 0 && n.to_i == 0
+      h = 0 if s.to_i == 0 && n.to_i == 0 && h.to_i == 0
+      d = 1 if s.to_i == 0 && n.to_i == 0 && h.to_i == 0 && d.to_i == 0
+      m = 1 if s.to_i == 0 && n.to_i == 0 && h.to_i == 0 && [0,1].include?(d.to_i) && m.to_i == 0
+
       conv_time(y,m,d,h,n,s)
     end
 

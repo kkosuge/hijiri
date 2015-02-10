@@ -57,6 +57,48 @@ describe Hijiri::Parser do
         expect(result.send(method)).to eq(time.send(method))
       end
     end
+    it '分のみ指定の場合0秒' do
+      Timecop.travel(2015, 1, 1, 1, 2, 2) do
+        text = "3分"
+        result = Hijiri::Parser.new(text).parse.results.first.datetime
+        expect(result.sec).to eq(0)
+      end
+    end
+    it '時間のみ指定の場合0分' do
+      Timecop.travel(2015, 1, 1, 1, 2) do
+        text = "12時"
+        result = Hijiri::Parser.new(text).parse.results.first.datetime
+        expect(result.min).to eq(0)
+      end
+    end
+    it '日のみ指定の場合0時0分' do
+      Timecop.travel(2015, 1, 1, 1, 2) do
+        text = "2日"
+        result = Hijiri::Parser.new(text).parse.results.first.datetime
+        expect(result.hour).to eq(0)
+        expect(result.min).to eq(0)
+      end
+    end
+    it '付きのみ指定の場合1日0時0分' do
+      Timecop.travel(2015, 1, 1, 1, 2) do
+        text = "12月"
+        result = Hijiri::Parser.new(text).parse.results.first.datetime
+        expect(result.month).to eq(12)
+        expect(result.day).to eq(1)
+        expect(result.hour).to eq(0)
+        expect(result.min).to eq(0)
+      end
+    end
+    it '年のみ指定の場合1日0時0分' do
+      Timecop.travel(2015, 1, 1, 1, 2) do
+        text = "2016年"
+        result = Hijiri::Parser.new(text).parse.results.first.datetime
+        expect(result.month).to eq(1)
+        expect(result.day).to eq(1)
+        expect(result.hour).to eq(0)
+        expect(result.min).to eq(0)
+      end
+    end
   end
   describe "〜時間後" do
     it '1時間後' do
